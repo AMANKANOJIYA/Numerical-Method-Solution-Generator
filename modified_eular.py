@@ -1,5 +1,5 @@
 def eular_mod(x,y):
-    function=x**2+y #define your own function
+    function=x**2+y #dyou can change your function from here
     return function
 
 x_0=eval(input("Enter the value of X-0 :=> "))

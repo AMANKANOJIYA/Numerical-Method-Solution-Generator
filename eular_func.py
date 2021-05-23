@@ -1,5 +1,5 @@
 def eular(x,y):
-    function=x+y #define your own function
+    function=x+y #you can change your function from here
     return function
 
 x_0=eval(input("Enter the value of X-0 :=> "))

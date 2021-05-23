@@ -1,8 +1,8 @@
 def runga_func (x,y):
-    function = x+(y**2)
+    function = x+(y**2) #You can change your function from here
     return function
 
-
+# RungaKutta Method 
 def rungaKutta (x_in,y_in,y_find,gap,itration=4):
     create_x=[i*gap for i in range(itration) ]
     create_y=[y_0]
