@@ -4,7 +4,7 @@ def eular(x,y):
 
 x_0=eval(input("Enter the value of X-0 :=> "))
 y_0=eval(input("Enter the value of Y-0 :=> "))
-find_y=eval(input("Enter the value of Y_given :=> "))
+find_y=eval(input("Enter the value of X_given :=> "))
 itration=int(input("Number of itration if any else Type (0) :=> "))
 def eular_calculation(x_0,y_0,y_giv,itration=6):
     gap=y_giv/(itration-1)
