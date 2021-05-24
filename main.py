@@ -135,6 +135,7 @@ class Numerical_Integration:
 >=========================================================<
 |            Created By --- AMAN KANOJIYA                 |
 >=========================================================<
+
     """
     def __init__(self):
         self.list=list(map(float,input("Enter a list of y knot value :: ").split(" ")))

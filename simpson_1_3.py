@@ -8,3 +8,5 @@ def simon_a(list_,h):
 if __name__=="__main__":
     e=simon_a(x,h)
     print(e,"this is your answer from simon 1/3")
+
+# done
