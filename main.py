@@ -1,3 +1,4 @@
+import numpy as np
 class Numerical_Analysis:
     """Numerical analysis, area of mathematics and computer science that creates,  
     analyzes, and implements algorithms for obtaining numerical solutions to  
@@ -27,7 +28,7 @@ class Numerical_Analysis:
             functionToWork(x,y)
         this function takes 2 input
         """
-        func=x+y
+        func=(y**2-x**2)/(y**2+x**2)
         return func
     def EularModified(self,itration=2):
         """
@@ -216,6 +217,20 @@ class Numerical_Integration:
         create_y=[functionToWork(i) for i in create_x]
         formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
         return formula
+
+class Numerical_Interpolation:
+    def __init__(self):
+        self.x_l=list(map(float,input("enter a list of x knot value :: ").split(" ")))
+        self.y_l=list(map(float,input("enter a list of y knot value :: ").split(" ")))
+        self.find_val=eval(input("Enter the value to find :"))
+
+    def Langrangian(self):
+        function=0
+        for i in range(len(self.x_l)):
+            list_up=[self.find_val-j for j in self.x_l if j!=self.x_l[i]]
+            list_down=[self.x_l[i]-j for j in self.x_l if j!=self.x_l[i]]
+            function=function+self.y_l[i]*(np.prod(list_up)/np.prod(list_down))
+        return function
 
 if __name__=="__main__":
     x = Numerical_Analysis(0, 1, 0.1)
