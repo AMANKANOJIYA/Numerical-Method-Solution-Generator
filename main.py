@@ -28,7 +28,7 @@ class Numerical_Analysis:
             functionToWork(x,y)
         this function takes 2 input
         """
-        func=(y**2-x**2)/(y**2+x**2)
+        func=1+((2*x*y)/1+(x**2))
         return func
     def EularModified(self,itration=2):
         """
@@ -230,6 +230,32 @@ class Numerical_Interpolation:
             list_up=[self.find_val-j for j in self.x_l if j!=self.x_l[i]]
             list_down=[self.x_l[i]-j for j in self.x_l if j!=self.x_l[i]]
             function=function+self.y_l[i]*(np.prod(list_up)/np.prod(list_down))
+        return function
+
+    def Newton_Divided(self):
+        length=len(self.x_l)
+        overall=[self.y_l]
+        x_gap=1
+        def divisor(x_0,x_1,y_0,y_1):
+            y=(y_1-y_0)/(x_1-x_0)
+            return y
+        for i in range(length,1,-1):
+            local=[]
+            y_list_itrate=overall[-1]
+            for j in range(i-1):
+                z=divisor(self.x_l[j], self.x_l[j+x_gap], y_list_itrate[j], y_list_itrate[j+1])
+                local.append(z)
+            overall.append(local)
+            x_gap+=1
+        function=0
+        for x in range(len(overall)):
+            if x+1==1:
+                function+=overall[x][0]
+            else:
+                set=""
+                for z in range(x):
+                    set=set+(f"*(self.find_val-({self.x_l[z]}))")
+                function+=((overall[x][0])*(eval(set[1:])))
         return function
 
 if __name__=="__main__":
