@@ -122,9 +122,9 @@ class Numerical_Integration:
 >=========================================================<
 
     """
-    def __init__(self):
-        self.x,self.y=eval(input("Enter Lower Limit of the Function:-> ")),eval(input("Enter Upper Limit of the Funcion:-> "))
-        self.itration=eval(input("Number of itrations :  "))
+    def __init__(self,x,y,itration):
+        self.x,self.y=eval(x),eval(y)
+        self.itration=eval(itration)
 
     def Trapazoid(self):
         """
@@ -219,12 +219,35 @@ class Numerical_Integration:
         return formula
 
 class Numerical_Interpolation:
-    def __init__(self):
-        self.x_l=list(map(float,input("enter a list of x knot value :: ").split(" ")))
-        self.y_l=list(map(float,input("enter a list of y knot value :: ").split(" ")))
-        self.find_val=eval(input("Enter the value to find :"))
+    """
+    In the mathematical field of numerical analysis,
+    interpolation is a type of estimation, a method of constructing 
+    new data points within the range of a discrete set of known data points.
+    
+    In this Module We have Three Methods
+    ---> Langrangian
+    ---> Newton Divided Differences
+
+>=========================================================<
+|            Created By --- AMAN KANOJIYA                 |
+>=========================================================<
+    """
+    def __init__(self,x_l,y_l,find):
+        self.x_l=x_l
+        self.y_l=y_l
+        self.find_val=find
 
     def Langrangian(self):
+        """
+        In numerical analysis, Lagrange polynomials are used for polynomial interpolation.
+        For a given set of points  (x_j,y_j) with no two x_j values equal, 
+        the Lagrange polynomial is the polynomial of lowest degree that assumes at each 
+        value x_j the corresponding value y_j, so that the functions coincide at each point.
+
+        Langrangian()
+
+        call this function to get Your Values
+        """
         function=0
         for i in range(len(self.x_l)):
             list_up=[self.find_val-j for j in self.x_l if j!=self.x_l[i]]
@@ -233,6 +256,17 @@ class Numerical_Interpolation:
         return function
 
     def Newton_Divided(self):
+        """
+        In mathematics, divided differences is an algorithm, 
+        historically used for computing tables of logarithms and trigonometric functions. 
+        ... Divided differences is a recursive division process. 
+        The method can be used to calculate the coefficients in the 
+        interpolation polynomial in the Newton form.
+
+        Newton_Divided() 
+
+        call this function to get Your Values
+        """
         length=len(self.x_l)
         overall=[self.y_l]
         x_gap=1
@@ -257,6 +291,75 @@ class Numerical_Interpolation:
                     set=set+(f"*(self.find_val-({self.x_l[z]}))")
                 function+=((overall[x][0])*(eval(set[1:])))
         return function
+    
+class Numerical_Algebra:
+    """
+    Numerical linear algebra, sometimes called applied linear algebra,
+    is the study of how matrix operations can be used to create computer 
+    algorithms which efficiently and accurately provide approximate 
+    answers to questions in continuous mathematics. 
+    It is a subfield of numerical analysis, and a type of linear algebra.
+
+    In this Module We have Three Methods
+    ---> Jacobi
+    ---> Gauss Seidel
+
+>=========================================================<
+|            Created By --- AMAN KANOJIYA                 |
+>=========================================================<
+    """
+    def __init__(self,l_1,l_2,l_3):
+        self.l_1=l_1
+        self.l_2=l_2
+        self.l_3=l_3
+    def Jacobi(self,itration=6):
+        """
+        In numerical linear algebra, the Jacobi method is an iterative
+        algorithm for determining the solutions of a strictly diagonally 
+        dominant system of linear equations. Each diagonal element is solved for,
+        and an approximate value is plugged in.
+        The process is then iterated until it converges.
+
+        Jacobi() 
+        Also can pass number of Itration to Perform By default :=> 6
+        call this function to get Your Values 
+        """
+        x_list=[0]
+        y_list=[0]
+        z_list=[0]
+        for i in range(itration):
+            x,y,z=x_list[-1],y_list[-1],z_list[-1]
+            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2])))/self.l_1[0]
+            y_find=(self.l_2[-1]-((self.l_2[0])*(x))-((z)*(self.l_2[2])))/self.l_2[1]
+            z_find=(self.l_3[-1]-((self.l_3[0])*(x))-((y)*(self.l_3[1])))/self.l_3[2]
+            x_list.append(x_find)
+            y_list.append(y_find)
+            z_list.append(z_find)
+        return x_list,y_list,z_list
+    def Gauss_Seidel(self,itration=6):
+        """
+        In numerical linear algebra, the Gauss–Seidel method, 
+        also known as the Liebmann method or the method of successive displacement,
+        is an iterative method used to solve a system of linear equations.
+        It is named after the German mathematicians Carl Friedrich Gauss
+        and Philipp Ludwig von Seidel, and is similar to the Jacobi method.
+        
+        Gauss_Seidel() 
+        Also can pass number of Itration to Perform By default :=> 6
+        call this function to get Your Values 
+        """
+        x_list=[0]
+        y_list=[0]
+        z_list=[0]
+        for i in range(itration):
+            x,y,z=x_list[-1],y_list[-1],z_list[-1]
+            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2])))/self.l_1[0]
+            y_find=(self.l_2[-1]-((self.l_2[0])*(x_find))-((z)*(self.l_2[2])))/self.l_2[1]
+            z_find=(self.l_3[-1]-((self.l_3[0])*(x_find))-((y_find)*(self.l_3[1])))/self.l_3[2]
+            x_list.append(x_find)
+            y_list.append(y_find)
+            z_list.append(z_find)
+        return x_list,y_list,z_list
 
 if __name__=="__main__":
     x = Numerical_Analysis(0, 1, 0.1)

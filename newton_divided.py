@@ -14,6 +14,7 @@ def Newton_Divided(x_list,y_list,x_find):
         overall.append(local)
         x_gap+=1
     function=0
+    print(overall)
     for x in range(len(overall)):
         if x+1==1:
             function+=overall[x][0]
