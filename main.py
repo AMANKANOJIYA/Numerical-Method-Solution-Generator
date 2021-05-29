@@ -1,4 +1,5 @@
 import numpy as np
+import math
 class Numerical_Analysis:
     """Numerical analysis, area of mathematics and computer science that creates,  
     analyzes, and implements algorithms for obtaining numerical solutions to  
@@ -291,7 +292,70 @@ class Numerical_Interpolation:
                     set=set+(f"*(self.find_val-({self.x_l[z]}))")
                 function+=((overall[x][0])*(eval(set[1:])))
         return function
-    
+    def Newton_Forward(self):
+        """
+        Forward Differences: The differences y1 – y0, y2 – y1, y3 – y2, ……,
+        yn – yn–1 when denoted by dy0, dy1, dy2, ……, dyn–1 are respectively, 
+        called the first forward differences.
+        
+        Newton_Forward()
+
+        call this function to get Your Values
+        """
+        length=len(self.x_list)
+        overall=[self.y_list]
+        x_gap=1
+        for i in range(length,1,-1):
+            local=[]
+            y_list_itrate=overall[-1]
+            for j in range(i-1):
+                z=y_list_itrate[j+1] - y_list_itrate[j]
+                local.append(z)
+            overall.append(local)
+            x_gap+=1
+        u=(self.x_find-self.x_list[0])/(self.x_list[1]-self.x_list[0])
+        function=0
+        for x in range(len(overall)):
+            if x+1==1:
+                function+=overall[x][0]
+            else :
+                set=""
+                for z in range(x):
+                    set+=(f"*(u-({z}))")
+                function+=((eval(set[1:]))*overall[x][0])/math.factorial(x)
+        return function
+    def Newton_Backward(self):
+        """
+        Backward Differences: The differences y1 – y0, y2 – y1, ……, yn – yn–1 
+        when denoted by dy1, dy2, ……, dyn, respectively, are called first backward difference.
+
+        Newton_Backward()
+
+        call this function to get Your Values
+        """
+        length=len(self.x_list)
+        overall=[self.y_list]
+        x_gap=1
+        for i in range(length,1,-1):
+            local=[]
+            y_list_itrate=overall[-1]
+            for j in range(i-1):
+                z=y_list_itrate[j+1] - y_list_itrate[j]
+                local.append(z)
+            overall.append(local)
+            x_gap+=1
+        u=(self.x_find-self.x_list[-1])/(self.x_list[1]-self.x_list[0])
+        function=0
+        for x in range(len(overall)):
+            if x+1==1:
+                function+=overall[x][-1]
+            else :
+                set=""
+                for z in range(x):
+                    set+=(f"*(u+({z}))")
+                function+=((eval(set[1:]))*overall[x][-1])/math.factorial(x)
+        return function
+
 class Numerical_Algebra:
     """
     Numerical linear algebra, sometimes called applied linear algebra,
