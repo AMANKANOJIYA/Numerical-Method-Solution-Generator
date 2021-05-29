@@ -42,3 +42,6 @@ if __name__=="__main__":
     print(z)
 
     # x,y,z,w=gs.gause_seidle_4([10,-2,-1,-1,3],[-2,10,-1,-1,15],[-1,-1,10,-2,27],[-1,-1,-2,10,-9],5)
+
+#     twine upload --skip-existing --repository-url https://test.pypi.org/legacy/ 
+# dist/*

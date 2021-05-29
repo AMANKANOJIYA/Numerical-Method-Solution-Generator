@@ -13,16 +13,16 @@ def Newton_Forward(x_list,y_list,x_find):
         x_gap+=1
     
     print(overall)
-    u=(x_find-x_list[0])/(x_list[1]-x_list[0])
+    u=(x_find-x_list[-1])/(x_list[1]-x_list[0])
     function=0
     for x in range(len(overall)):
         if x+1==1:
-            function+=overall[x][0]
+            function+=overall[x][-1]
         else :
             set=""
             for z in range(x):
-                set+=(f"*(u-({z}))")
-            function+=((eval(set[1:]))*overall[x][0])/math.factorial(x)
+                set+=(f"*(u+({z}))")
+            function+=((eval(set[1:]))*overall[x][-1])/math.factorial(x)
     return function
 
 if __name__=="__main__":
