@@ -10,6 +10,8 @@ def gause_seidle(l_1,l_2,l_3,itration):
         x_list.append(x_find)
         y_list.append(y_find)
         z_list.append(z_find)
+    for i in range(len(x_list)):
+        print(x_list[i],y_list[i],z_list[i])
     return x_list,y_list,z_list
 
 
@@ -28,6 +30,8 @@ def gause_seidle_4(l_1,l_2,l_3,l_4,itration):
         y_list.append(y_find)
         z_list.append(z_find)
         w_list.append(w_find)
+    for i in range(len(x_list)):
+        print(x_list[i],y_list[i],z_list[i],w_list[i])
     return x_list,y_list,z_list,w_list
 
 

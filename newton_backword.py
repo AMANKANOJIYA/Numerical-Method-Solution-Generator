@@ -3,6 +3,7 @@ def Newton_Forward(x_list,y_list,x_find):
     length=len(x_list)
     overall=[y_list]
     x_gap=1
+    # This loop is for creating the Table 
     for i in range(length,1,-1):
         local=[]
         y_list_itrate=overall[-1]
@@ -11,8 +12,13 @@ def Newton_Forward(x_list,y_list,x_find):
             local.append(z)
         overall.append(local)
         x_gap+=1
-    
-    print(overall)
+    # this Loop is for Printing the table created
+    z=len(overall)//2 
+    for i in range(len(overall)):
+        for index in range(len(overall[i])):
+            print(overall[index][i],end="  ")
+        print("\n ")
+    # This Is to generate Final value 
     u=(x_find-x_list[-1])/(x_list[1]-x_list[0])
     function=0
     for x in range(len(overall)):
@@ -25,6 +31,7 @@ def Newton_Forward(x_list,y_list,x_find):
             function+=((eval(set[1:]))*overall[x][-1])/math.factorial(x)
     return function
 
+# Main Run
 if __name__=="__main__":
     x_list=list(map(float,input("enter a list of x knot value :: ").split(" ")))
     y_list=list(map(float,input("enter a list of y knot value :: ").split(" ")))

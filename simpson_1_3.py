@@ -1,8 +1,7 @@
 # x=list(map(float,input("enter a list of y knot value :: ").split(" ")))
 import numpy as np
 import math
-x,y=eval(input("Enter Lower Limit of the function:-> ")),eval(input("Enter Upper Limit of the Funcion:-> "))
-h=eval(input("Number of itrations :  "))
+
 # simon 1/3
 def function(x):
     y=math.sqrt(np.cos(x))
@@ -16,6 +15,8 @@ def simpson_a(x,y,itration):
     return formula
 
 if __name__=="__main__":
+    x,y=eval(input("Enter Lower Limit of the function:-> ")),eval(input("Enter Upper Limit of the Funcion:-> "))
+    h=eval(input("Number of itrations :  "))
     e=simpson_a(x,y,h)
     print(e,"this is your answer from simpson 1/3")
 

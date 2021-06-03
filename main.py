@@ -228,6 +228,8 @@ class Numerical_Interpolation:
     In this Module We have Three Methods
     ---> Langrangian
     ---> Newton Divided Differences
+    ---> Newton Forward
+    ---> Newton Backward
 
 >=========================================================<
 |            Created By --- AMAN KANOJIYA                 |

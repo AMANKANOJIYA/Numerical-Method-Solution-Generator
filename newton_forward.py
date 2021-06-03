@@ -11,8 +11,13 @@ def Newton_Forward(x_list,y_list,x_find):
             local.append(z)
         overall.append(local)
         x_gap+=1
-    
-    print(overall)
+
+    z=len(overall)//2 
+    for i in range(len(overall)):
+        for index in range(len(overall[i])):
+            print(overall[index][i],end="  ")
+        print("\n ")
+
     u=(x_find-x_list[0])/(x_list[1]-x_list[0])
     function=0
     for x in range(len(overall)):
@@ -29,4 +34,4 @@ if __name__=="__main__":
     x_list=list(map(float,input("enter a list of x knot value :: ").split(" ")))
     y_list=list(map(float,input("enter a list of y knot value :: ").split(" ")))
     find_val=eval(input("Enter the value to find :"))
-    print(Newton_Forward(x_list, y_list, find_val))
+    print(f"The Corresponding y Value for {find_val} is : {Newton_Forward(x_list, y_list, find_val)} ")
