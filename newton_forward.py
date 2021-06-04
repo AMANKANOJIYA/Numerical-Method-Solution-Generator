@@ -15,7 +15,7 @@ def Newton_Forward(x_list,y_list,x_find):
     z=len(overall)//2 
     for i in range(len(overall)):
         for index in range(len(overall[i])):
-            print(overall[index][i],end="  ")
+            print(f"{index}y_{i}=",overall[index][i],end="  ")
         print("\n ")
 
     u=(x_find-x_list[0])/(x_list[1]-x_list[0])

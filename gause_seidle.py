@@ -40,10 +40,7 @@ if __name__=="__main__":
     y_list=list(map(float,input("enter a list of y knot value :: ").split(" ")))
     z_list=list(map(float,input("enter a list of z knot value :: ").split(" ")))
     find_val=int(input("Define the number of itration :"))
-    x,y,z=jacobi(x_list, y_list, z_list, find_val)
-    print(x)
-    print(y)
-    print(z)
+    x,y,z=gause_seidle(x_list, y_list, z_list, find_val)
 
     # x,y,z,w=gs.gause_seidle_4([10,-2,-1,-1,3],[-2,10,-1,-1,15],[-1,-1,10,-2,27],[-1,-1,-2,10,-9],5)
 

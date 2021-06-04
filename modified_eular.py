@@ -14,6 +14,8 @@ def eular_mod_calculation(x_0,y_0,y_giv,itration=1):
         y_get=create_y[-1]+(gap*eular_mod(create_x[i],create_y[-1]))
         y_confirm=create_y[-1]+((gap/2)*(eular_mod(create_x[i],create_y[-1])+eular_mod(create_x[i]+gap,y_get)))
         create_y.append(y_confirm)
+    for i in range(len(create_x)):
+        print(f"x{i} = {create_x} , y{i} = {create_y}")
     return create_x,create_y
 
 z,x=eular_mod_calculation(x_0,y_0,find_y,itration)

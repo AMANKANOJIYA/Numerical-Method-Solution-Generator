@@ -1,5 +1,6 @@
+import math
 def eular(x,y):
-    function=x+y #you can change your function from here
+    function=(1+()) #you can change your function from here
     return function
 
 x_0=eval(input("Enter the value of X-0 :=> "))
@@ -13,6 +14,8 @@ def eular_calculation(x_0,y_0,y_giv,itration=6):
     for i in range(1,itration):
         y_get=create_y[-1]+(gap*eular(create_x[i],create_y[-1]))
         create_y.append(y_get)
+    for i in range(len(create_x)):
+        print(f"x{i} = {create_x} , y{i} = {create_y}")
     return create_x,create_y
 
 z,x=eular_calculation(x_0,y_0,find_y,itration)
