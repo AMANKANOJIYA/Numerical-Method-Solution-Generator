@@ -1,12 +1,14 @@
 import math
 def runga_func (x,y):
-    function = 1+((2*x*y)/(1+x**2)) #You can change your function from here
+    function = (y**2-x**2)/(y**2+x**2) #You can change your function from here
     return function
 
 # RungaKutta Method 
 def rungaKutta (x_in,y_in,gap,itration=4):
     create_x=[i*gap for i in range(itration) ]
     create_y=[y_in]
+    print(create_x,"X table")
+    print(create_y,"Y table\n\n")
     for i in range(itration):
         k_1 = gap * runga_func(create_x[i],create_y[-1])
         k_2 = gap * runga_func(create_x[i]+(gap/2),create_y[-1]+(k_1/2))
@@ -15,8 +17,8 @@ def rungaKutta (x_in,y_in,gap,itration=4):
         k = (k_1+(2*k_2)+(2*k_3)+k_4)/6
         yOut = create_y[-1] + k
         create_y.append(yOut)
-    for i in range(len(create_x)):
-        print(f"x{i} = {create_x} , y{i} = {create_y}")
+        print(f"k-1 : {k_1} , k-2 : {k_2} , k-3 : {k_3} , k-4 : {k_4} \n")
+        print(f"k value {k} , y-output {yOut}\n\n")
     return create_x,create_y
 
 

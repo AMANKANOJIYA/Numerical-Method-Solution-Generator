@@ -1,3 +1,4 @@
+
 def gause_seidle(l_1,l_2,l_3,itration):
     x_list=[0]
     y_list=[0]
@@ -39,10 +40,11 @@ if __name__=="__main__":
     x_list=list(map(float,input("enter a list of x knot value :: ").split(" ")))
     y_list=list(map(float,input("enter a list of y knot value :: ").split(" ")))
     z_list=list(map(float,input("enter a list of z knot value :: ").split(" ")))
+    w_list=list(map(float,input("enter a list of w knot value :: ").split(" ")))
     find_val=int(input("Define the number of itration :"))
-    x,y,z=gause_seidle(x_list, y_list, z_list, find_val)
+    # x,y,z=gause_seidle(x_list, y_list, z_list, find_val)
 
-    # x,y,z,w=gs.gause_seidle_4([10,-2,-1,-1,3],[-2,10,-1,-1,15],[-1,-1,10,-2,27],[-1,-1,-2,10,-9],5)
+    x,y,z,w=gause_seidle_4(x_list,y_list,z_list,w_list,find_val)
 
 #     twine upload --skip-existing --repository-url https://test.pypi.org/legacy/ 
 # dist/*

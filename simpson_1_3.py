@@ -12,6 +12,8 @@ def simpson_a(x,y,itration):
     create_x=[i*gap for i in range(0,itration+1)]
     create_y=[function(i) for i in create_x]
     formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
+    print(create_x)
+    print(create_y)
     return formula
 
 if __name__=="__main__":

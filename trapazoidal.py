@@ -1,15 +1,24 @@
-x=list(map(float,input("enter a list of y knot value :: ").split(" ")))
-h=eval(input("ENter the gap  :  "))
+import math
+def functionToWork(x):
+    y=math.sqrt(math.cos(x))
+    return y
 
 # Trapazoid
-def trapazoidal(list_,h):
-    formula=h*(((list_[0]+list_[-1])/2)+sum([list_[i] for i in range(1,len(list_)-1)]))
+def trapazoidal(x,y,itration):
+    gap=(y-x)/itration
+    create_x=[i*gap for i in range(0,itration+1)]
+    create_y=[functionToWork(i) for i in create_x]
+    formula=gap*(((create_y[0]+create_y[-1])/2)+sum([create_y[i] for i in range(1,len(create_y)-1)]))
+    print(create_x)
+    print(create_y)
     return formula
 
 
 if __name__=="__main__":
-    f=trapazoidal(x,h)
-    print(f,"this is your answer from trapazoidal")
+    x,y=eval(input("Enter Lower Limit of the function:-> ")),eval(input("Enter Upper Limit of the Funcion:-> "))
+    h=eval(input("Number of itrations :  "))
+    e=trapazoidal(x,y,h)
+    print(e,"this is your answer Trapazoidal")
 
 
 
