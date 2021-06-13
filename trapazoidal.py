@@ -1,6 +1,7 @@
 import math
+
 def functionToWork(x):
-    y=math.sqrt(math.cos(x))
+    y=(2+x**2)/((x**3)*(1+x**2)**(1/4))
     return y
 
 # Trapazoid

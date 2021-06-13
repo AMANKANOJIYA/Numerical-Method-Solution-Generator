@@ -15,10 +15,12 @@ class Numerical_Analysis:
 |            Created By --- AMAN KANOJIYA                 |
 >=========================================================<
      """
-    def __init__(self,x_0,y_0,x_given):
+    def __init__(self,x_0,y_0,x_given,gap,function):
         self.x_0=x_0
         self.y_0=y_0
         self.x_given=x_given
+        self.gap=gap
+        self.function=str(function)
     def functionToWork(self,x,y):
         """
         This Help to generate The Function Output Given as per queestion 
@@ -29,8 +31,7 @@ class Numerical_Analysis:
             functionToWork(x,y)
         this function takes 2 input
         """
-        func=1+((2*x*y)/1+(x**2))
-        return func
+        return eval(self.function)
     def EularModified(self,itration=2):
         """
     >============ Eular Modified Method =================<
@@ -48,13 +49,15 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        gap=self.x_given/(itration)
-        create_x=[i*gap for i in range(itration+1) ]
+        # gap=self.x_given/(itration)
+        create_x=[i*self.gap for i in range(itration+1) ]
         create_y=[self.y_0]
         for i in range(1,itration+1):
-            y_get=create_y[-1]+(gap*self.functionToWork(create_x[i],create_y[-1]))
-            y_confirm=create_y[-1]+((gap/2)*(self.functionToWork(create_x[i],create_y[-1])+self.functionToWork(create_x[i]+gap,y_get)))
+            y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
+            y_confirm=create_y[-1]+((self.gap/2)*(self.functionToWork(create_x[i],create_y[-1])+self.functionToWork(create_x[i]+self.gap,y_get)))
             create_y.append(y_confirm)
+        print(create_x,create_y)
+        print(y_get,y_confirm)
         return create_x,create_y
     def Eular(self,itration=2):
         """
@@ -123,11 +126,11 @@ class Numerical_Integration:
 >=========================================================<
 
     """
-    def __init__(self,x,y,itration):
-        self.x,self.y=eval(x),eval(y)
-        self.itration=eval(itration)
+    def __init__(self,lower,upper,function):
+        self.x,self.y=eval(str(lower)),eval(str(upper))
+        self.function=str(function)
 
-    def Trapazoid(self):
+    def Trapazoid(self,itration=2):
         """
     >============ Trapazoid =================<
 
@@ -151,14 +154,17 @@ class Numerical_Integration:
                 functionToWork(x)
             this function takes 1 input
             """
-            return 1/(1+x**2)
-        gap=(self.y-self.x)/self.itration
-        create_x=[i*gap for i in range(0,self.itration+1)]
+            return eval(self.function)
+        gap=(self.y-self.x)/(2*itration)
+        print(gap)
+        create_x=[self.x+(i*gap) for i in range(0,2*itration+1)]
         create_y=[functionToWork(i) for i in create_x]
-        formula=gap*(((create_y[0]+create_y[-1])/2)+sum([create_y[i] for i in range(1,len(create_y)-1)]))
+        formula=gap*(((create_y[0]+create_y[-1])/2)+sum([2*create_y[i] for i in range(1,len(create_y)-1)]))
+        print(create_x,create_y)
+        print(sum([2*create_y[i] for i in range(1,len(create_y)-1)]+[create_y[0]+create_y[-1]]))
         return formula
     
-    def Simpson_38(self):
+    def Simpson_38(self,itration=2):
         """
     >============ Simpson 1/3 =================<
 
@@ -183,14 +189,14 @@ class Numerical_Integration:
                 functionToWork(x)
             this function takes 1 input
             """
-            return 1/(1+x**2)
-        gap=(self.y-self.x)/self.itration
-        create_x=[i*gap for i in range(0,self.itration+1)]
+            return eval(self.function)
+        gap=(self.y-self.x)/(2*itration)
+        create_x=[self.x+(i*gap) for i in range(0,2*itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1,len(create_y)) if (i)%3!=0]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,3)])))
         return formula
     
-    def Simpson_13(self):
+    def Simpson_13(self,itration=2):
         """
     >============ Simpson 3/8 =================<
 
@@ -212,9 +218,9 @@ class Numerical_Integration:
                 functionToWork(x)
             this function takes 1 input
             """
-            return 1/(1+x**2)
-        gap=(self.y-self.x)/self.itration
-        create_x=[i*gap for i in range(0,self.itration+1)]
+            return eval(self.function)
+        gap=(self.y-self.x)/(2*itration)
+        create_x=[self.x+(i*gap) for i in range(0,2*itration)]
         create_y=[functionToWork(i) for i in create_x]
         formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
         return formula
@@ -228,17 +234,15 @@ class Numerical_Interpolation:
     In this Module We have Three Methods
     ---> Langrangian
     ---> Newton Divided Differences
-    ---> Newton Forward
-    ---> Newton Backward
 
 >=========================================================<
 |            Created By --- AMAN KANOJIYA                 |
 >=========================================================<
     """
-    def __init__(self,x_l,y_l,find):
-        self.x_l=x_l
-        self.y_l=y_l
-        self.find_val=find
+    def __init__(self,x_list,y_list,find_value):
+        self.x_l=x_list
+        self.y_l=y_list
+        self.find_val=find_value
 
     def Langrangian(self):
         """
@@ -294,6 +298,7 @@ class Numerical_Interpolation:
                     set=set+(f"*(self.find_val-({self.x_l[z]}))")
                 function+=((overall[x][0])*(eval(set[1:])))
         return function
+
     def Newton_Forward(self):
         """
         Forward Differences: The differences y1 – y0, y2 – y1, y3 – y2, ……,
@@ -304,8 +309,8 @@ class Numerical_Interpolation:
 
         call this function to get Your Values
         """
-        length=len(self.x_list)
-        overall=[self.y_list]
+        length=len(self.x_l)
+        overall=[self.y_l]
         x_gap=1
         for i in range(length,1,-1):
             local=[]
@@ -315,7 +320,7 @@ class Numerical_Interpolation:
                 local.append(z)
             overall.append(local)
             x_gap+=1
-        u=(self.x_find-self.x_list[0])/(self.x_list[1]-self.x_list[0])
+        u=(self.find_val-self.x_l[0])/(self.x_l[1]-self.x_l[0])
         function=0
         for x in range(len(overall)):
             if x+1==1:
@@ -335,8 +340,8 @@ class Numerical_Interpolation:
 
         call this function to get Your Values
         """
-        length=len(self.x_list)
-        overall=[self.y_list]
+        length=len(self.x_l)
+        overall=[self.y_l]
         x_gap=1
         for i in range(length,1,-1):
             local=[]
@@ -346,7 +351,7 @@ class Numerical_Interpolation:
                 local.append(z)
             overall.append(local)
             x_gap+=1
-        u=(self.x_find-self.x_list[-1])/(self.x_list[1]-self.x_list[0])
+        u=(self.find_val-self.x_l[-1])/(self.x_l[1]-self.x_l[0])
         function=0
         for x in range(len(overall)):
             if x+1==1:
@@ -357,7 +362,7 @@ class Numerical_Interpolation:
                     set+=(f"*(u+({z}))")
                 function+=((eval(set[1:]))*overall[x][-1])/math.factorial(x)
         return function
-
+    
 class Numerical_Algebra:
     """
     Numerical linear algebra, sometimes called applied linear algebra,
@@ -448,7 +453,7 @@ class Numerical_Algebra:
             x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2]))-((w)*(self.l_1[3])))/self.l_1[0]
             y_find=(self.l_2[-1]-((self.l_2[0])*(x_find))-((z)*(self.l_2[2]))-((w)*(self.l_2[3])))/self.l_2[1]
             z_find=(self.l_3[-1]-((self.l_3[0])*(x_find))-((y_find)*(self.l_3[1]))-((w)*(self.l_3[3])))/self.l_3[2]
-            w_find=(self.l_4[-1]-((l_4[0])*(x_find))-((y_find)*(l_4[1]))-((z_find)*(l_4[2])))/l_4[3]
+            w_find=(l_4[-1]-((l_4[0])*(x_find))-((y_find)*(l_4[1]))-((z_find)*(l_4[2])))/l_4[3]
             x_list.append(x_find)
             y_list.append(y_find)
             z_list.append(z_find)
@@ -461,9 +466,19 @@ if __name__=="__main__":
     print(x.EularModified(5))
     print(x.RungaKutta(5))
 
-    y=Numerical_Integration()
+    y=Numerical_Integration(12,34)
     print(y.Trapazoid())
     print(y.Simpson_13())
     print(y.Simpson_38())
-    # "1 0.972 0.9 0.8 0.692 0.5901 0.5",0.16666
+
+    z=Numerical_Interpolation([],[],12)
+    print(z.Langrangian())
+    print(z.Newton_Divided())
+    print(z.Newton_Forward())
+    print(z.Newton_Backward())
+
+    w=Numerical_Algebra([], [], [])
+    print(w.Jacobi())
+    print(w.Gauss_Seidel())
+    print(w.Gauss_Seidel_4())
 
