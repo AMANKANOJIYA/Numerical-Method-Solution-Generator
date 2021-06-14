@@ -153,13 +153,10 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return eval(self.function)
-        gap=(self.y-self.x)/(2*itration)
-        print(gap)
-        create_x=[self.x+(i*gap) for i in range(0,2*itration+1)]
+        gap=(self.y-self.x)/(itration)
+        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
-        formula=gap*(((create_y[0]+create_y[-1])/2)+sum([2*create_y[i] for i in range(1,len(create_y)-1)]))
-        print(create_x,create_y)
-        print(sum([2*create_y[i] for i in range(1,len(create_y)-1)]+[create_y[0]+create_y[-1]]))
+        formula=(gap/2)*((create_y[0]+create_y[-1])+2*sum([create_y[i] for i in range(1,len(create_y)-1)]))
         return formula
     
     def Simpson_38(self,itration=2):
@@ -188,8 +185,8 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return eval(self.function)
-        gap=(self.y-self.x)/(2*itration)
-        create_x=[self.x+(i*gap) for i in range(0,2*itration+1)]
+        gap=(self.y-self.x)/(itration)
+        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1,len(create_y)) if (i)%3!=0]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,3)])))
         return formula
@@ -217,8 +214,8 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return eval(self.function)
-        gap=(self.y-self.x)/(2*itration)
-        create_x=[self.x+(i*gap) for i in range(0,2*itration)]
+        gap=(self.y-self.x)/(itration)
+        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
         return formula
@@ -460,23 +457,23 @@ class Numerical_Algebra:
 
 if __name__=="__main__":
     x = Numerical_Analysis(0, 1, 0.1)
-    print(x.Eular(5))
-    print(x.EularModified(5))
-    print(x.RungaKutta(5))
+    # print(x.Eular(5))
+    # print(x.EularModified(5))
+    # print(x.RungaKutta(5))
 
     y=Numerical_Integration(12,34)
-    print(y.Trapazoid())
-    print(y.Simpson_13())
-    print(y.Simpson_38())
+    # print(y.Trapazoid())
+    # print(y.Simpson_13())
+    # print(y.Simpson_38())
 
     z=Numerical_Interpolation([],[],12)
-    print(z.Langrangian())
-    print(z.Newton_Divided())
-    print(z.Newton_Forward())
-    print(z.Newton_Backward())
+    # print(z.Langrangian())
+    # print(z.Newton_Divided())
+    # print(z.Newton_Forward())
+    # print(z.Newton_Backward())
 
     w=Numerical_Algebra([], [], [])
-    print(w.Jacobi())
-    print(w.Gauss_Seidel())
-    print(w.Gauss_Seidel_4())
+    # print(w.Jacobi())
+    # print(w.Gauss_Seidel())
+    # print(w.Gauss_Seidel_4())
 

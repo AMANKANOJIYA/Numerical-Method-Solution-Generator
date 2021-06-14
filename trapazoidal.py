@@ -1,7 +1,7 @@
 import math
 
 def functionToWork(x):
-    y=(2+x**2)/((x**3)*(1+x**2)**(1/4))
+    y=1/(1+x)
     return y
 
 # Trapazoid
