@@ -32,7 +32,7 @@ class Numerical_Analysis:
         this function takes 2 input
         """
         return eval(self.function)
-    def EularModified(self,itration=2):
+    def EularModified(self,itration=None):
         """
     >============ Eular Modified Method =================<
 
@@ -49,17 +49,15 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        # gap=self.x_given/(itration)
-        create_x=[i*self.gap for i in range(itration+1) ]
+        itration=4 if itration==None else itration
+        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
         create_y=[self.y_0]
-        for i in range(1,itration+1):
+        for i in range(0,len(create_x)-1):
             y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
             y_confirm=create_y[-1]+((self.gap/2)*(self.functionToWork(create_x[i],create_y[-1])+self.functionToWork(create_x[i]+self.gap,y_get)))
             create_y.append(y_confirm)
-        print(create_x,create_y)
-        print(y_get,y_confirm)
         return create_x,create_y
-    def Eular(self,itration=2):
+    def Eular(self,itration=None):
         """
     >============ Eular Method =================<
 
@@ -74,14 +72,14 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        gap=self.x_given/(itration)
-        create_x=[i*gap for i in range(itration+1) ]
+        itration=4 if itration==None else itration
+        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
         create_y=[self.y_0]
-        for i in range(1,itration+1):
-            y_get=create_y[-1]+(gap*self.functionToWork(create_x[i],create_y[-1]))
+        for i in range(0,len(create_x)-1):
+            y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
             create_y.append(y_get)
         return create_x,create_y
-    def RungaKutta(self,itration=2):
+    def RungaKutta(self,itration=None):
         """
     >============ Eular Modified Method =================<
 
@@ -95,14 +93,14 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        gap=self.x_given/(itration)
-        create_x=[i*gap for i in range(itration+1) ]
+        itration=4 if itration==None else itration
+        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
         create_y=[self.y_0]
-        for i in range(itration):
-            k_1 = gap * self.functionToWork(create_x[i],create_y[-1])
-            k_2 = gap * self.functionToWork(create_x[i]+(gap/2),create_y[-1]+(k_1/2))
-            k_3 = gap * self.functionToWork(create_x[i]+(gap/2),create_y[-1]+(k_2/2))
-            k_4 = gap * self.functionToWork(create_x[i]+gap,create_y[-1]+k_3)
+        for i in range(0,len(create_x)-1):
+            k_1 = self.gap * self.functionToWork(create_x[i],create_y[-1])
+            k_2 = self.gap * self.functionToWork(create_x[i]+(self.gap/2),create_y[-1]+(k_1/2))
+            k_3 = self.gap * self.functionToWork(create_x[i]+(self.gap/2),create_y[-1]+(k_2/2))
+            k_4 = self.gap * self.functionToWork(create_x[i]+self.gap,create_y[-1]+k_3)
             k = (k_1+(2*k_2)+(2*k_3)+k_4)/6
             yOut = create_y[-1] + k
             create_y.append(yOut)

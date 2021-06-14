@@ -46,11 +46,11 @@
 
 
 import math
-x=24
-y=34
+x=0.25
+y=0
 gap=0.1
 # a=eval("x+y**3")
-a=eval("(y*math.log(y))/x")
+a=eval("3*x+4*x")
 print(a)
-print(math.e) #2.718281828459045
-math.sqrt(math.log(x))
+# print(math.e) #2.718281828459045
+# math.sqrt(math.log(x))
