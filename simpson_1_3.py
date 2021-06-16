@@ -4,7 +4,7 @@ import math
 
 # simon 1/3
 def function(x):
-    y=math.sqrt(np.cos(x))
+    y=x
     return y
 
 def simpson_a(x,y,itration):
