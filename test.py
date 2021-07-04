@@ -166,30 +166,62 @@
 # Divide("two","one")
 # Mean("six","five")
 
-def Error_Handler(func):
-    def inner (*args):
-        try:
-            func(*args)
-            print(func.__name__)
-        except Exception as e:
-            print(f"{type(e).__name__}\n==============\n {e} \n in{func.__name__} function")
-    return inner
+# def Error_Handler(func):
+#     def inner (*args):
+#         try:
+#             func(*args)
+#             print(func.__name__)
+#         except Exception as e:
+#             print(f"{type(e).__name__}\n==============\n {e} \n in{func.__name__} function")
+#     return inner
 
-class general():
-    @Error_Handler
-    def __init__(self, x,y,z):
-        self.x=int(x)
-        self.y=int(y)
-        self.z=int(z)
+# class general():
+#     @Error_Handler
+#     def __init__(self, x,y,z):
+#         self.x=int(x)
+#         self.y=int(y)
+#         self.z=int(z)
 
-    @Error_Handler
-    def extra(self,we,ze):
-        print(we,ze)
+#     @Error_Handler
+#     def extra(self,we,ze):
+#         print(we,ze)
 
-x=general(234234, "asd" ,234)
-x.extra(234, 32423)
+# x=general(234234, "asd" ,234)
+# x.extra(234, 32423)
         
 
+# test Phase Befor Release 0.0.9 =================================
+
+# import main as na
+
+# x = na.Numerical_Integration(2,7,"1/(5*x+3)") #0.4301 - 5
+# y = na.Numerical_Analysis(0,1,0.2,0.1,"((x**3)*(math.e**(-2*x))-(2*y))") #2
+# z = na.Numerical_Interpolation([1891,1901,1911,1921,1931],[46,66,81,93,101],1925) # 14.666 - 10
+# w = na.Numerical_Algebra([10,1,-1,11.19],[1,10,1,28.08],[-1,1,10,35.61]) #x=1.23 y=2.34 z=3.45
+
+# print(x.Trapazoid(6))
+# print(x.Simpson_13(6))
+# print(x.Simpson_38(6))
+
+# print(y.Eular(  ))
+# print(y.EularModified(  ))
+# print(y.RungaKutta(  ))
+
+# print(z.Langrangian())
+# print(z.Newton_Divided())
+# print(z.Newton_Forward())
+# print(z.Newton_Backward())
+
+# print(w.Jacobi())
+# print(w.Gauss_Seidel())
+# print(w.Gauss_Seidel_4(list_4))
+
+
+a=3
+b=4
+q=complex(str(a)+"+"+str(b)+"j")
+print(q**(-1))
+print(type(q))
 
 
 

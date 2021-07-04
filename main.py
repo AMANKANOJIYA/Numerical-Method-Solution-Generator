@@ -29,9 +29,10 @@ import math
 def Error_Handler(func):
     def inner (*args):
         try:
-            func(*args)
+            return func(*args)
         except Exception as e:
             print(f"{type(e).__name__}\n==============\n {e} \n in {func.__name__} function")
+            return "error"
     return inner
         
 # MAIN CLASS START
